@@ -12,8 +12,8 @@ var myip = require('quick-local-ip');
 
 const WEBPACK_NETWORK_IP = myip.getLocalIP4();
 const WEBPACK_SERVER_HOST = 'http://' + WEBPACK_NETWORK_IP;
-const WEBPACK_SERVER_PORT = 3000;
-const PHONEGAP_SERVER_PORT = 3001;
+const WEBPACK_SERVER_PORT = 8000;
+const PHONEGAP_SERVER_PORT = 8001;
 const STATIC_PATH = 'static';
 const BUNDLE_FILE = 'bundle.js';
 const APP_NAME = packageJson.name;
@@ -55,6 +55,7 @@ var webpackOptions = {
   sassLoader: {
     includePaths: [
       path.resolve(__dirname, './node_modules/bootstrap-sass/assets/stylesheets/'),
+      path.resolve(__dirname, './node_modules/skeleton-scss/scss/'),
       path.resolve(__dirname, './node_modules/compass-mixins/lib/')
     ]
   },
