@@ -44,5 +44,27 @@ body,
 }
 
 .paragraph-section {
-  margin-top: $gutter;
+  margin-top: $gutter/2;
+}
+
+.container.container--pure {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+.table-view-cell {
+  margin-bottom: 0;
+}
+
+.table-view-cell.table-view-cell--todo {
+  margin-bottom: 0;
+  padding: 10px;
+  position: relative;
+  padding-left: 44px;
+
+  .icon {
+    position: absolute;
+    left: 10px;
+  }
 }

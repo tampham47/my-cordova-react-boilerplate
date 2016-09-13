@@ -26,18 +26,18 @@ class App extends React.Component {
             <span className="icon icon-person"></span>
             <span className="tab-label">mom</span>
           </Link>
-          <a className="tab-item" href="#">
+          <Link to="/todo" className="tab-item">
             <span className="icon icon-star-filled"></span>
             <span className="tab-label">todo</span>
-          </a>
-          <a className="tab-item" href="#">
+          </Link>
+          <Link to="/plus" className="tab-item">
             <span className="icon icon-search"></span>
             <span className="tab-label">plus</span>
-          </a>
-          <a className="tab-item" href="#">
+          </Link>
+          <Link to="/kick" className="tab-item">
             <span className="icon icon-gear"></span>
             <span className="tab-label">kick</span>
-          </a>
+          </Link>
         </nav>
       </div>
     );
