@@ -6,7 +6,12 @@ import React from 'react';
 
 class Home extends React.Component {
 
+  componentDidMount() {
+  }
+
   render() {
+    var deviceStr = JSON.stringify(device);
+
     return (
       <div className="container">
         <form action="#">
@@ -25,7 +30,7 @@ class Home extends React.Component {
             </div>
           </div>
           <label for="exampleMessage">Message</label>
-          <textarea className="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
+          <textarea className="u-full-width" placeholder="Hi Dave …" id="exampleMessage" defaultValue={deviceStr}></textarea>
           <label className="example-send-yourself-copy">
             <input type="checkbox" />
             <span className="label-body">Send a copy to yourself</span>

@@ -155,19 +155,19 @@ gulp.task('create-cordova', ['clear-release'], shell.task('./node_modules/.bin/c
  * Add ios platform to created cordova project
  * It could be run once
  */
-gulp.task('platform-ios', shell.task('cd release && ../node_modules/.bin/cordova platform add ios'));
+gulp.task('platform-ios', shell.task('cd release && cordova platform add ios'));
 
 /**
  * Add android platform to created cordova project
  * It could be run once
  */
-gulp.task('platform-android', shell.task('cd release && ../node_modules/.bin/cordova platform add android'));
+gulp.task('platform-android', shell.task('cd release && cordova platform add android'));
 
 /**
  * Add browser platform to created cordova project
  * It could be run once
  */
-gulp.task('platform-browser', shell.task('cd release && ../node_modules/.bin/cordova platform add browser'));
+gulp.task('platform-browser', shell.task('cd release && cordova platform add browser'));
 
 /**
  * Clear previous html code from release/www
@@ -181,35 +181,35 @@ gulp.task('clear-cordova-www', function () {
  * Build mobile apps for all installed platforms
  * Run after any changes
  */
-gulp.task('build-cordova', shell.task('cd release && ../node_modules/.bin/cordova build'));
+gulp.task('build-cordova', shell.task('cd release && cordova build'));
 
 /**
  * Build mobile apps for ios platform
  * Run after any changes instead `build-cordova`
  */
-gulp.task('build-ios', shell.task('cd release && ../node_modules/.bin/cordova build ios'));
+gulp.task('build-ios', shell.task('cd release && cordova build ios'));
 
 /**
  * Build mobile apps for android platform
  * Run after any changes instead `build-cordova`
  */
-gulp.task('build-android', shell.task('cd release && ../node_modules/.bin/cordova build android'));
+gulp.task('build-android', shell.task('cd release && cordova build android'));
 
 /**
  * Build mobile apps for browser platform
  * Run after any changes instead `build-cordova`
  */
-gulp.task('build-browser', shell.task('cd release && ../node_modules/.bin/cordova build browser'));
+gulp.task('build-browser', shell.task('cd release && cordova build browser'));
 
 /**
  * Run ios emulation - this also build app
  */
-gulp.task('emulate-ios', shell.task('cd release && ../node_modules/.bin/cordova emulate ios'));
+gulp.task('emulate-ios', shell.task('cd release && cordova emulate ios'));
 
 /**
  * Run android emulation - this also build app
  */
-gulp.task('emulate-android', shell.task('cd release && ../node_modules/.bin/cordova emulate android'));
+gulp.task('emulate-android', shell.task('cd release && cordova emulate android'));
 
 /**
  * Run ripple emulation
@@ -224,7 +224,7 @@ gulp.task('phonegap-serve', shell.task('cd release && ../node_modules/.bin/phone
 /**
  * Run app in browser - this also build app
  */
-gulp.task('run-browser', shell.task('cd release && ../node_modules/.bin/cordova run browser'));
+gulp.task('run-browser', shell.task('cd release && cordova run browser'));
 
 /**
  * Higher level task, should be run once for create cordova project (it could be run more times but it is time consuming)
