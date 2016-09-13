@@ -96,6 +96,11 @@ gulp.task('copy-layout', function() {
     .pipe(gulp.dest('./release/www'))
 });
 
+gulp.task('copy-static', function() {
+  return gulp.src(['./src/static/**/*'])
+    .pipe(gulp.dest('./release/www'))
+});
+
 /**
  * copy non bundled files from src to dist directory with path to hot loader server
  */
@@ -258,7 +263,7 @@ gulp.task('prebuild-android-hot', function(done) {
  * Emulate browser app with hot loader
  */
 gulp.task('prebuild-browser-hot', function(done) {
-  runSequence('clear-cordova-www', 'copy-layout-hot', 'compile-react-hot', 'run-browser', done);
+  runSequence('clear-cordova-www', 'copy-layout-hot', 'copy-static', 'compile-react-hot', 'run-browser', done);
 });
 
 /**

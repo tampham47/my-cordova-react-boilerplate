@@ -5,3 +5,44 @@
 @import "compass";
 @import "compass/reset";
 @import "skeleton";
+@import "variables";
+
+html,
+body,
+#root,
+#main-section {
+  height: 100%;
+}
+
+#main-section {
+  // Needs latest Compass, add '@import "compass"' to your scss
+  // Permalink - use to edit and share this gradient:
+  // http://colorzilla.com/gradient-editor/#cb60b3+0,ad1283+50,de47ac+100;Pink+3D
+
+  // background-color: #cb60b3; // Old browsers
+  // @include filter-gradient(#cb60b3, #de47ac, vertical); // IE6-9
+  // @include background-image(linear-gradient(top,  #cb60b3 0%,#ad1283 50%,#de47ac 100%));
+}
+
+.bar.bar-nav.bar-nav--secondary {
+  top: $header-h;
+}
+
+.main-content {
+  padding-top: $header-h;
+  padding-bottom: $tabbar-h;
+  height: 100%;
+
+  &--secondary {
+    padding-top: 2*$header-h;
+  }
+
+  &__scroller {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+.paragraph-section {
+  margin-top: $gutter;
+}
