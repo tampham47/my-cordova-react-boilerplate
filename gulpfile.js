@@ -277,5 +277,5 @@ gulp.task('prebuild-ripple-hot', function(done) {
  * Run test by 'The PhoneGap Developer App'
  */
 gulp.task('prebuild-phonegap-hot', function(done) {
-  runSequence('clear-cordova-www', 'copy-layout-hot', 'compile-react-hot', 'phonegap-serve', done);
+  runSequence('clear-cordova-www', 'copy-layout-hot', 'copy-static', 'compile-react-hot', 'phonegap-serve', done);
 });

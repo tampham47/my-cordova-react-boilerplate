@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div id="main-section">
         <header className="bar bar-nav">
-          <a className="icon icon-info pull-right"></a>
+          <Link to="/profile" className="icon icon-info pull-right"></Link>
           <h1 className="title">Similac Mom</h1>
         </header>
 

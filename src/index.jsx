@@ -18,6 +18,8 @@ import Baby from './components/Baby.jsx';
 import Mom from './components/Mom.jsx';
 import Todo from './components/Todo.jsx';
 import Search from './components/Search.jsx';
+import Kick from './components/Kick.jsx';
+import Profile from './components/Profile.jsx';
 
 const history = createMemoryHistory('/');
 var store = createStore(reducer);
@@ -32,6 +34,8 @@ document.addEventListener('deviceready', () => {
           <Route path="/mom" component={Mom}/>
           <Route path="/todo" component={Todo}/>
           <Route path="/plus" component={Search}/>
+          <Route path="/kick" component={Kick}/>
+          <Route path="/profile" component={Profile}/>
         </Route>
       </Router>
     </Provider>,
