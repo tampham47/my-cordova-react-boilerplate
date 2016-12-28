@@ -5,3 +5,9 @@ npm-debug.log
 dist
 release
 typings
+
+
+hooks
+platforms
+plugins
+www

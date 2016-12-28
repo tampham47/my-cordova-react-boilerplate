@@ -20,6 +20,9 @@ const APP_NAME = packageJson.name;
 const APP_ID = packageJson.id;
 const APP_VERSION = packageJson.version;
 
+const srcPath = './src';
+const destPath = './www';
+
 var webpackOptionsLoader = {
   test: /.jsx?$/,
   loaders: ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0'],
@@ -49,7 +52,7 @@ var webpackOptions = {
     './src/index.jsx'
   ],
   output: {
-    path: path.join(__dirname, './release/www/' + STATIC_PATH + '/'),
+    path: path.join(__dirname, destPath + '/' + STATIC_PATH + '/'),
     filename: BUNDLE_FILE
   },
   sassLoader: {
@@ -82,6 +85,11 @@ gulp.task('clear-release', function () {
     .pipe(clean());
 });
 
+// gulp.task('clear-dest', function () {
+//   return gulp.src(destPath, {read: false})
+//     .pipe(clean());
+// });
+
 /**
  * copy non bundled files from src to dist directory
  */
@@ -93,12 +101,12 @@ gulp.task('copy-layout', function() {
         APP_NAME: APP_NAME
       }
     }))
-    .pipe(gulp.dest('./release/www'))
+    .pipe(gulp.dest(destPath))
 });
 
 gulp.task('copy-static', function() {
   return gulp.src(['./src/static/**/*'])
-    .pipe(gulp.dest('./release/www'))
+    .pipe(gulp.dest(destPath))
 });
 
 /**
@@ -112,7 +120,7 @@ gulp.task('copy-layout-hot', function() {
         APP_NAME: APP_NAME
       }
     }))
-    .pipe(gulp.dest('./release/www'))
+    .pipe(gulp.dest(destPath))
 });
 
 /**
@@ -154,31 +162,35 @@ gulp.task('compile-react-hot', function(done) {
  * Create defauld cordova project in release directory.
  * It could be run once
  */
-gulp.task('create-cordova', ['clear-release'], shell.task('./node_modules/.bin/cordova create release ' + APP_ID + ' ' + APP_NAME));
+// gulp.task('create-cordova', ['clear-release'], shell.task('./node_modules/.bin/cordova create release ' + APP_ID + ' ' + APP_NAME));
+gulp.task('create-cordova', shell.task('./node_modules/.bin/cordova create . ' + APP_ID + ' ' + APP_NAME));
 
 /**
  * Add ios platform to created cordova project
  * It could be run once
  */
-gulp.task('platform-ios', shell.task('cd release && cordova platform add ios'));
+// gulp.task('platform-ios', shell.task('cd release && cordova platform add ios'));
+gulp.task('platform-ios', shell.task('cordova platform add ios'));
 
 /**
  * Add android platform to created cordova project
  * It could be run once
  */
-gulp.task('platform-android', shell.task('cd release && cordova platform add android'));
+// gulp.task('platform-android', shell.task('cd release && cordova platform add android'));
+gulp.task('platform-android', shell.task('cordova platform add android'));
 
 /**
  * Add browser platform to created cordova project
  * It could be run once
  */
-gulp.task('platform-browser', shell.task('cd release && cordova platform add browser'));
+// gulp.task('platform-browser', shell.task('cd release && cordova platform add browser'));
+gulp.task('platform-browser', shell.task('cordova platform add browser'));
 
 /**
  * Clear previous html code from release/www
  */
 gulp.task('clear-cordova-www', function () {
-  return gulp.src('release/www', {read: false})
+  return gulp.src(destPath, {read: false})
     .pipe(clean());
 });
 
@@ -242,7 +254,7 @@ gulp.task('init-cordova', function(done) {
  * Fill cordova project with proper html, js, css
  */
 gulp.task('prepare-build', function(done) {
-  runSequence('clear-cordova-www', 'copy-layout', 'compile-react', done);
+  runSequence('clear-cordova-www', 'copy-layout', 'compile-react', 'copy-static', done);
 });
 
 /**
