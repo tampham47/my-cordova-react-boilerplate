@@ -15,20 +15,6 @@ class Mom extends React.Component {
       <section className="main-content main-content--secondary">
         <div className="main-content__scroller">
           <div className="container container--pure">
-            <header className="bar bar-nav bar-nav--secondary">
-              <div className="segmented-control">
-                <a className="control-item active" href="#item1mobile">
-                  Thing one
-                </a>
-                <a className="control-item" href="#item2mobile">
-                  Thing two
-                </a>
-                <a className="control-item" href="#item3mobile">
-                  Thing three
-                </a>
-              </div>
-            </header>
-
             <div className="paragraph-section">
               <ul className="table-view">
                 <li className="table-view-cell">

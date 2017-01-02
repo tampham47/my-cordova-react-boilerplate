@@ -24,6 +24,10 @@ import Profile from './components/Profile.jsx';
 const history = createMemoryHistory('/');
 var store = createStore(reducer);
 
+var initPlugin = function() {
+  codePush.sync();
+};
+
 document.addEventListener('deviceready', () => {
   render(
     <Provider store={store}>
@@ -42,4 +46,12 @@ document.addEventListener('deviceready', () => {
     document.getElementById('root')
   );
 
+  if (typeof cordova != 'undefined') {
+    initPlugin();
+  }
 }, false);
+
+if (typeof cordova == 'undefined') {
+  var event = new Event('deviceready');
+  document.dispatchEvent(event);
+}

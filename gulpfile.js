@@ -29,6 +29,7 @@ var webpackOptionsLoader = {
   include: path.join(__dirname, 'src'),
   exclude: /node_modules/
 };
+
 var webpackOptions = {
   module: {
     loaders: [
@@ -84,11 +85,6 @@ gulp.task('clear-release', function () {
   return gulp.src('release', {read: false})
     .pipe(clean());
 });
-
-// gulp.task('clear-dest', function () {
-//   return gulp.src(destPath, {read: false})
-//     .pipe(clean());
-// });
 
 /**
  * copy non bundled files from src to dist directory
@@ -159,34 +155,6 @@ gulp.task('compile-react-hot', function(done) {
 });
 
 /**
- * Create defauld cordova project in release directory.
- * It could be run once
- */
-// gulp.task('create-cordova', ['clear-release'], shell.task('./node_modules/.bin/cordova create release ' + APP_ID + ' ' + APP_NAME));
-gulp.task('create-cordova', shell.task('./node_modules/.bin/cordova create . ' + APP_ID + ' ' + APP_NAME));
-
-/**
- * Add ios platform to created cordova project
- * It could be run once
- */
-// gulp.task('platform-ios', shell.task('cd release && cordova platform add ios'));
-gulp.task('platform-ios', shell.task('cordova platform add ios'));
-
-/**
- * Add android platform to created cordova project
- * It could be run once
- */
-// gulp.task('platform-android', shell.task('cd release && cordova platform add android'));
-gulp.task('platform-android', shell.task('cordova platform add android'));
-
-/**
- * Add browser platform to created cordova project
- * It could be run once
- */
-// gulp.task('platform-browser', shell.task('cd release && cordova platform add browser'));
-gulp.task('platform-browser', shell.task('cordova platform add browser'));
-
-/**
  * Clear previous html code from release/www
  */
 gulp.task('clear-cordova-www', function () {
@@ -194,100 +162,18 @@ gulp.task('clear-cordova-www', function () {
     .pipe(clean());
 });
 
-/**
- * Build mobile apps for all installed platforms
- * Run after any changes
- */
-gulp.task('build-cordova', shell.task('cd release && cordova build'));
-
-/**
- * Build mobile apps for ios platform
- * Run after any changes instead `build-cordova`
- */
-gulp.task('build-ios', shell.task('cd release && cordova build ios'));
-
-/**
- * Build mobile apps for android platform
- * Run after any changes instead `build-cordova`
- */
-gulp.task('build-android', shell.task('cd release && cordova build android'));
-
-/**
- * Build mobile apps for browser platform
- * Run after any changes instead `build-cordova`
- */
-gulp.task('build-browser', shell.task('cd release && cordova build browser'));
-
-/**
- * Run ios emulation - this also build app
- */
-gulp.task('emulate-ios', shell.task('cd release && cordova emulate ios'));
-
-/**
- * Run android emulation - this also build app
- */
-gulp.task('emulate-android', shell.task('cd release && cordova emulate android'));
-
-/**
- * Run ripple emulation
- */
-gulp.task('emulate-ripple', shell.task('cd release && ../node_modules/.bin/ripple emulate'));
-
-/**
- * run phonegap server
- */
-gulp.task('phonegap-serve', shell.task('cd release && ../node_modules/.bin/phonegap serve --no-autoreload -p ' + PHONEGAP_SERVER_PORT));
-
-/**
- * Run app in browser - this also build app
- */
-gulp.task('run-browser', shell.task('cd release && cordova run browser'));
-
-/**
- * Higher level task, should be run once for create cordova project (it could be run more times but it is time consuming)
- */
-gulp.task('init-cordova', function(done) {
-  runSequence('create-cordova', 'platform-ios', 'platform-android', 'platform-browser', done);
-});
+gulp.task('run-browser', shell.task('http-server www/'));
+gulp.task('cordova-prepare', shell.task('cordova prepare ios && cordova prepare android'));
+gulp.task('release-ios', shell.task('code-push release-cordova tw-starter ios'));
+gulp.task('release-android', shell.task('code-push release-cordova tw-starter android'));
 
 /**
  * Fill cordova project with proper html, js, css
  */
 gulp.task('prepare-build', function(done) {
-  runSequence('clear-cordova-www', 'copy-layout', 'compile-react', 'copy-static', done);
+  runSequence('clear-cordova-www', 'copy-layout', 'compile-react', 'copy-static', 'cordova-prepare', done);
 });
 
-/**
- * Emulate ios app with hot loader
- */
-gulp.task('prebuild-ios-hot', function(done) {
-  runSequence('clear-cordova-www', 'copy-layout-hot', 'compile-react-hot', 'emulate-ios', done);
-});
-
-/**
- * Emulate android app with hot loader
- */
-gulp.task('prebuild-android-hot', function(done) {
-  runSequence('clear-cordova-www', 'copy-layout-hot', 'compile-react-hot', 'emulate-android', done);
-});
-
-/**
- * Emulate browser app with hot loader
- */
-gulp.task('prebuild-browser-hot', function(done) {
+gulp.task('start_dev', function(done) {
   runSequence('clear-cordova-www', 'copy-layout-hot', 'copy-static', 'compile-react-hot', 'run-browser', done);
-});
-
-/**
- * Emulate app by ripple and hot loader
- */
-gulp.task('prebuild-ripple-hot', function(done) {
-  runSequence('clear-cordova-www', 'copy-layout-hot', 'compile-react-hot', 'emulate-ripple', done);
-});
-
-/**
- * Run test by 'The PhoneGap Developer App'
- */
-gulp.task('prebuild-phonegap-hot', function(done) {
-  runSequence('clear-cordova-www', 'copy-layout-hot', 'copy-static', 'compile-react-hot', 'phonegap-serve', done);
 });

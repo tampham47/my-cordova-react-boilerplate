@@ -1,14 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="pl.artvawe.cordova" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>cordova-react-boilerplate</name>
+    <name>Timelife</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+        TamPham
     </author>
     <content src="index.html" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -16,6 +15,11 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#165769" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
@@ -26,4 +30,13 @@
     <plugin name="cordova-plugin-code-push" spec="~1.9.2-beta" />
     <engine name="ios" spec="~3.9.2" />
     <engine name="android" spec="~4.1.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.2.1" />
+    <engine name="browser" spec="~4.0.0" />
+    <platform name="android">
+        <preference name="CodePushDeploymentKey" value="uX1SHjFU6j8szzLRu6o5OqA2bv9rVJPK4Tn4z" />
+    </platform>
+    <platform name="ios">
+        <preference name="CodePushDeploymentKey" value="uX1SHjFU6j8szzLRu6o5OqA2bv9rVJPK4Tn4z" />
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.1" />
 </widget>

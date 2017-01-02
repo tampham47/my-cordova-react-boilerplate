@@ -33,13 +33,20 @@ body,
   padding-bottom: $tabbar-h;
   height: 100%;
 
-  &--secondary {
-    padding-top: 2*$header-h;
-  }
-
   &__scroller {
     height: 100%;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &--secondary {
+    padding-top: $header-h;
+  }
+
+  &--full {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 

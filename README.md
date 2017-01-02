@@ -1,8 +1,8 @@
-# boilerplate cordova react app
-[cordova](https://cordova.apache.org/docs/en/latest/platform_plugin_versioning_ref/)
+# Boilerplate cordova react app
+[cordova](https://cordova.apache.org/docs/en/latest/platform_plugin_versioning_ref/)  
 [cordova-icon](https://www.npmjs.com/package/cordova-icon)  
-[cordova-splash](https://www.npmjs.com/package/cordova-splash)
-[code-push](https://microsoft.github.io/code-push/)
+[cordova-splash](https://www.npmjs.com/package/cordova-splash)  
+[code-push](https://microsoft.github.io/code-push/)  
 
 
 ## Installation:
