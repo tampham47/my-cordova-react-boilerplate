@@ -25,7 +25,41 @@ const history = createMemoryHistory('/');
 var store = createStore(reducer);
 
 var initPlugin = function() {
+  setTimeout(function() {
+    navigator.splashscreen.hide();
+  }, 50);
+
   codePush.sync();
+
+  /**
+  // firebase
+  window.FirebasePlugin.grantPermission();
+  window.FirebasePlugin.getInstanceId(
+    function(token) {
+      alert('getToken 1: ' + token);
+    },
+    function(error) {
+      console.error(error);
+    }
+  );
+  window.FirebasePlugin.getToken(function(token) {
+    // save this server-side and use it to push notifications to this device
+    alert('getToken: ' + token);
+  }, function(error) {
+    console.error(error);
+  });
+  window.FirebasePlugin.onTokenRefresh(function(token) {
+    // save this server-side and use it to push notifications to this device
+    alert('onTokenRefresh: ' + token);
+  }, function(error) {
+    console.error(error);
+  });
+  window.FirebasePlugin.onNotificationOpen(function(notification) {
+    alert('onNotificationOpen: ' + JSON.stringify(notification));
+  }, function(error) {
+    console.error(error);
+  });
+  */
 };
 
 document.addEventListener('deviceready', () => {

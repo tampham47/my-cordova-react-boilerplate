@@ -4,6 +4,7 @@
   "version": "1.1.2",
   "description": "Cordova app boilerplate",
   "scripts": {
+    "postinstall": "cordova prepare",
     "gen-icon": "cordova-icon --xcode-old",
     "gen-splash": "cordova-splash --xcode-old"
   },

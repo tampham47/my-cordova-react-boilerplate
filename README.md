@@ -3,6 +3,7 @@
 [cordova-icon](https://www.npmjs.com/package/cordova-icon)  
 [cordova-splash](https://www.npmjs.com/package/cordova-splash)  
 [code-push](https://microsoft.github.io/code-push/)  
+[cordova-plugin-firebase](https://www.npmjs.com/package/cordova-plugin-firebase)
 
 
 ## Installation:
