@@ -175,6 +175,6 @@ gulp.task('prepare-build', function(done) {
   runSequence('clear-cordova-www', 'copy-layout', 'compile-react', 'copy-static', 'cordova-prepare-ios', done);
 });
 
-gulp.task('start_dev', function(done) {
+gulp.task('start-dev', function(done) {
   runSequence('clear-cordova-www', 'copy-layout-hot', 'copy-static', 'compile-react-hot', 'run-browser', done);
 });
