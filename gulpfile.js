@@ -165,8 +165,6 @@ gulp.task('clear-cordova-www', function () {
 gulp.task('run-browser', shell.task('http-server www/'));
 gulp.task('cordova-prepare', shell.task('cordova prepare'));
 gulp.task('cordova-prepare-ios', shell.task('cordova prepare ios'));
-gulp.task('release-ios', shell.task('code-push release-cordova tw-starter ios'));
-gulp.task('release-android', shell.task('code-push release-cordova tw-starter android'));
 
 /**
  * Fill cordova project with proper html, js, css

@@ -5,6 +5,11 @@
   "description": "Cordova app boilerplate",
   "scripts": {
     "postinstall": "gulp prepare-build",
+
+    "release-ios": "code-push release-cordova tw-starter ios",
+    "release-android": "code-push release-cordova tw-starter android",
+    "release-all": "release-ios && release-android",
+
     "gen-icon": "cordova-icon --xcode-old",
     "gen-splash": "cordova-splash --xcode-old"
   },
